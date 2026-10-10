@@ -1,2 +1,2 @@
-import { PageStub } from './PageStub'
-export function TermsAndConditions() { return <PageStub page="terms-and-conditions" /> }
+import { LegalPage } from '../components/LegalPage'
+export function TermsAndConditions() { return <LegalPage pageKey="terms" route="/terms-and-conditions" /> }

@@ -1,2 +1,2 @@
-import { PageStub } from './PageStub'
-export function PrivacyPolicy() { return <PageStub page="privacy-policy" /> }
+import { LegalPage } from '../components/LegalPage'
+export function PrivacyPolicy() { return <LegalPage pageKey="privacy" route="/privacy-policy" /> }

@@ -26,4 +26,4 @@ export const schemas: Record<string, FieldConfig[]> = {
 
 export const singleGroups = ['general', 'founder', 'contact']
 export const listGroups = ['services', 'tools', 'portfolio', 'testimonials', 'partners', 'videos', 'banners', 'offers', 'social', 'seo', 'homeSections']
-export const groupLabels: Record<string, string> = { general: 'General', founder: 'Founder', services: 'Services', tools: 'Tools', portfolio: 'Portfolio', testimonials: 'Testimonials', partners: 'Partners', videos: 'Videos', banners: 'Banners', offers: 'Offers', contact: 'Contact', social: 'Social', seo: 'SEO', homeSections: 'Homepage sections' }
+export const groupLabels: Record<string, string> = { general: 'General', founder: 'Founder', services: 'Services', tools: 'Tools', portfolio: 'Portfolio', testimonials: 'Testimonials', partners: 'Partners', videos: 'Videos', banners: 'Banners', offers: 'Offers', contact: 'Contact', social: 'Social', seo: 'SEO', homeSections: 'Homepage sections', legal: 'Legal pages' }

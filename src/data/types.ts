@@ -25,4 +25,8 @@ export interface FeaturedVideo { id: string; title: string; youtubeUrlOrId: stri
 export interface PartnershipProgram { title: string; description: string; requirements: string[]; benefits: string[] }
 export interface PartnershipContent { intro: string; dealership: PartnershipProgram; referral: PartnershipProgram; comparison: { suits: string[]; work: string[]; earn: string[]; requirements: string[]; support: string[] } }
 export interface HomeSection { id: string; enabled: boolean; order: number; heading?: string; subheading?: string }
-export interface SiteContent { general: GeneralContent; founder: FounderContent; home: HomeContent; homeSections: HomeSection[]; about: AboutContent; startupProgram: StartupContent; womenSupport: WomenSupportContent; formOptions: FormOptionContent; partnership: PartnershipContent; services: ServiceItem[]; tools: ToolItem[]; portfolio: PortfolioItem[]; testimonials: Testimonial[]; partners: Partner[]; videos: FeaturedVideo[]; banners: Banner[]; offers: Offer[]; contact: ContactContent; social: SocialLink[]; seo: SeoEntry[] }
+export type LegalStatus = 'draft' | 'reviewed'
+export interface LegalSection { heading: string; body: string }
+export interface LegalPage { title: string; lastUpdated: string; status: LegalStatus; sections: LegalSection[] }
+export interface LegalContent { privacy: LegalPage; terms: LegalPage; refund: LegalPage; disclaimer: LegalPage }
+export interface SiteContent { general: GeneralContent; founder: FounderContent; home: HomeContent; homeSections: HomeSection[]; about: AboutContent; startupProgram: StartupContent; womenSupport: WomenSupportContent; formOptions: FormOptionContent; partnership: PartnershipContent; services: ServiceItem[]; tools: ToolItem[]; portfolio: PortfolioItem[]; testimonials: Testimonial[]; partners: Partner[]; videos: FeaturedVideo[]; banners: Banner[]; offers: Offer[]; contact: ContactContent; social: SocialLink[]; seo: SeoEntry[]; legal: LegalContent }

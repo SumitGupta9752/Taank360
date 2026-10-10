@@ -1,26 +1,28 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { ScrollToTop } from './components/ScrollToTop'
-import { About } from './pages/About'
-import { Contact } from './pages/Contact'
-import { Admin } from './pages/Admin'
-import { Disclaimer } from './pages/Disclaimer'
 import { Home } from './pages/Home'
-import { NotFound } from './pages/NotFound'
-import { Partnership } from './pages/Partnership'
-import { Portfolio } from './pages/Portfolio'
-import { PrivacyPolicy } from './pages/PrivacyPolicy'
-import { RefundPolicy } from './pages/RefundPolicy'
-import { ServiceCategory } from './pages/ServiceCategory'
-import { Services } from './pages/Services'
-import { StartupProgram } from './pages/StartupProgram'
-import { TermsAndConditions } from './pages/TermsAndConditions'
-import { WomenEntrepreneurSupport } from './pages/WomenEntrepreneurSupport'
 import { ThemeApplier } from './components/ThemeApplier'
 import { ADMIN_ENABLED } from './config'
 
+const About = lazy(() => import('./pages/About').then((module) => ({ default: module.About })))
+const Contact = lazy(() => import('./pages/Contact').then((module) => ({ default: module.Contact })))
+const Admin = lazy(() => import('./pages/Admin').then((module) => ({ default: module.Admin })))
+const Disclaimer = lazy(() => import('./pages/Disclaimer').then((module) => ({ default: module.Disclaimer })))
+const NotFound = lazy(() => import('./pages/NotFound').then((module) => ({ default: module.NotFound })))
+const Partnership = lazy(() => import('./pages/Partnership').then((module) => ({ default: module.Partnership })))
+const Portfolio = lazy(() => import('./pages/Portfolio').then((module) => ({ default: module.Portfolio })))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then((module) => ({ default: module.PrivacyPolicy })))
+const RefundPolicy = lazy(() => import('./pages/RefundPolicy').then((module) => ({ default: module.RefundPolicy })))
+const ServiceCategory = lazy(() => import('./pages/ServiceCategory').then((module) => ({ default: module.ServiceCategory })))
+const Services = lazy(() => import('./pages/Services').then((module) => ({ default: module.Services })))
+const StartupProgram = lazy(() => import('./pages/StartupProgram').then((module) => ({ default: module.StartupProgram })))
+const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions').then((module) => ({ default: module.TermsAndConditions })))
+const WomenEntrepreneurSupport = lazy(() => import('./pages/WomenEntrepreneurSupport').then((module) => ({ default: module.WomenEntrepreneurSupport })))
+
 function App() {
-  return <BrowserRouter><ThemeApplier /><ScrollToTop /><Routes><Route element={<Layout />}>
+  return <BrowserRouter><ThemeApplier /><ScrollToTop /><Suspense fallback={<div className="route-loading" aria-hidden="true" />}><Routes><Route element={<Layout />}>
     <Route path="/" element={<Home />} /><Route path="/about" element={<About />} />
     <Route path="/services" element={<Services />} />
     <Route path="/services/digital-marketing" element={<ServiceCategory category="Digital Marketing" />} />
@@ -33,7 +35,7 @@ function App() {
     <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
     <Route path="/refund-policy" element={<RefundPolicy />} /><Route path="/disclaimer" element={<Disclaimer />} />
     <Route path="/admin" element={ADMIN_ENABLED ? <Admin /> : <NotFound />} /><Route path="*" element={<NotFound />} />
-  </Route></Routes></BrowserRouter>
+  </Route></Routes></Suspense></BrowserRouter>
 }
 
 export default App

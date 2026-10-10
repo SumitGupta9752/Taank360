@@ -1,0 +1,2 @@
+import type { ReactNode } from 'react'
+export function Section({ eyebrow, title, description, id, children }: { eyebrow?: string; title: string; description?: string; id?: string; children?: ReactNode }) { return <section className="section container" id={id}><div className="section__intro">{eyebrow && <p className="eyebrow">{eyebrow}</p>}<h2>{title}</h2>{description && <p className="section__description">{description}</p>}</div>{children}</section> }

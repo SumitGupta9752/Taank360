@@ -1,0 +1,10 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useContent } from '../hooks/useContent'
+import { PageBanner } from '../components/PageBanner'
+import { Reveal } from '../components/Reveal'
+import { Section } from '../components/Section'
+import { Seo } from '../components/Seo'
+import { PortfolioCard } from '../components/PortfolioCard'
+import { VideoTestimonials } from '../components/VideoTestimonials'
+export function Portfolio() { const content = useContent(); const items = content.portfolio.filter((item) => item.status === 'visible').sort((a, b) => a.order - b.order); const industries = [...new Set(items.map((item) => item.industry).filter(Boolean))]; const [filter, setFilter] = useState('All'); const filtered = filter === 'All' ? items : items.filter((item) => item.industry === filter); return <><Seo entry={content.seo.find((item) => item.route === '/portfolio')} /><PageBanner banner={content.banners.find((item) => item.page === 'portfolio')} />{items.length || content.testimonials.length ? <><Reveal><Section title="Our work">{industries.length > 1 && <div className="filter-chips" role="group" aria-label="Filter portfolio"><button className="chip" type="button" aria-pressed={filter === 'All'} onClick={() => setFilter('All')}>All</button>{industries.map((industry) => <button className="chip" type="button" aria-pressed={filter === industry} onClick={() => setFilter(industry)} key={industry}>{industry}</button>)}</div>}<div className="portfolio-grid">{filtered.map((item) => <PortfolioCard item={item} key={item.id} />)}</div></Section></Reveal><VideoTestimonials /></> : <Reveal><Section title="Our portfolio is being updated." description="In the meantime, tell us about your project."><Link className="button button--primary" to="/contact?tab=project">Start a Project</Link></Section></Reveal>}</> }

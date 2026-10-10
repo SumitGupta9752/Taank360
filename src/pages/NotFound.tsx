@@ -1,0 +1,3 @@
+import { Button } from '../components/Button'
+import { Seo } from '../components/Seo'
+export function NotFound() { return <><Seo entry={{ route: '*', title: 'Page Not Found | Taank360', description: 'The requested page could not be found.', canonical: '/', ogTitle: 'Page Not Found | Taank360', ogDescription: 'The requested page could not be found.', ogImage: '', indexing: 'noindex, nofollow' }} /><section className="not-found container"><p className="eyebrow">404</p><h1>That page is not here.</h1><p>Let’s take you back to the Taank360 starting point.</p><Button to="/">Return home</Button></section></> }

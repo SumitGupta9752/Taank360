@@ -1,12 +1,14 @@
-import { defaultContent } from '../data/content'
 import { useEffect, useState } from 'react'
 import type { SiteContent } from '../data/types'
+import { CONTENT_CHANGED_EVENT, getActiveContent } from '../lib/contentLoader'
 
 export function useContent() {
-  const [content, setContent] = useState<SiteContent>(defaultContent)
+  const [content, setContent] = useState<SiteContent>(getActiveContent)
   useEffect(() => {
-    if (!import.meta.env.DEV || new URLSearchParams(window.location.search).get('preview') !== 'sample') return
-    import('../data/sample.dev').then(({ sampleContent }) => setContent(sampleContent)).catch(() => undefined)
+    const refresh = () => setContent(getActiveContent())
+    window.addEventListener(CONTENT_CHANGED_EVENT, refresh)
+    if (import.meta.env.DEV && window.location.pathname !== '/admin' && new URLSearchParams(window.location.search).get('preview') === 'sample') import('../data/sample.dev').then(({ createSampleContent }) => setContent(createSampleContent(getActiveContent()))).catch(() => undefined)
+    return () => window.removeEventListener(CONTENT_CHANGED_EVENT, refresh)
   }, [])
   return content
 }

@@ -356,7 +356,7 @@ Build with AI one prompt per phase. Test and commit after each.
 | 1 | Foundation | Setup, design tokens, typed content, routing (all routes as stubs), header/footer, shared components (PageBanner, Section, Button, Card, Seo, Reveal), `.htaccess` | ☑ Done and tested |
 | 2 | Core pages | Home, About, Services (+3 sub-pages), Startup Program, Women Entrepreneur Support, Contact | ☑ Done and tested |
 | 3 | Portfolio & Partnership | Portfolio grid, YouTube 9:16 carousel, partner marquee, partnership models + form, startup application form | ☑ Done and tested |
-| 4 | Content editor | `/admin`, drafts, preview, JSON import/export, reset | ☐ |
+| 4 | Content editor | `/admin`, drafts, preview, JSON import/export, reset | ☑ Done and tested |
 | 5 | SEO & accessibility | Per-route metadata, sitemap, robots, structured data, keyboard + reduced-motion audit | ☐ |
 | 6 | QA & deployment | Responsive testing, build verification, route refresh test, README, GitHub, Hostinger | ☐ |
 

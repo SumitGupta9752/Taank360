@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+## Content editor
+
+Use `/admin` to edit local content. Drafts stay in the current browser only. Follow the export, publish, and Hostinger workflow in [docs/CONTENT-WORKFLOW.md](docs/CONTENT-WORKFLOW.md).
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

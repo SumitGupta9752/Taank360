@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { useContent } from '../hooks/useContent'
 import { parseYouTube } from '../lib/youtube'
+import { isContentEnabled } from '../lib/content'
 import { YouTubeFacade } from './YouTubeFacade'
 import { Reveal } from './Reveal'
 import { Section } from './Section'
 
 export function VideoTestimonials() {
-  const testimonials = useContent().testimonials.filter((item) => item.status === 'visible' && parseYouTube(item.youtubeUrlOrId)).sort((a, b) => a.order - b.order)
+  const testimonials = useContent().testimonials.filter((item) => isContentEnabled(item.status) && parseYouTube(item.youtubeUrlOrId)).sort((a, b) => a.order - b.order)
   const trackRef = useRef<HTMLDivElement>(null)
   const [canBack, setCanBack] = useState(false)
   const [canForward, setCanForward] = useState(testimonials.length > 1)

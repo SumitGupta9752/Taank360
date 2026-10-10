@@ -16,9 +16,11 @@ import { Services } from './pages/Services'
 import { StartupProgram } from './pages/StartupProgram'
 import { TermsAndConditions } from './pages/TermsAndConditions'
 import { WomenEntrepreneurSupport } from './pages/WomenEntrepreneurSupport'
+import { ThemeApplier } from './components/ThemeApplier'
+import { ADMIN_ENABLED } from './config'
 
 function App() {
-  return <BrowserRouter><ScrollToTop /><Routes><Route element={<Layout />}>
+  return <BrowserRouter><ThemeApplier /><ScrollToTop /><Routes><Route element={<Layout />}>
     <Route path="/" element={<Home />} /><Route path="/about" element={<About />} />
     <Route path="/services" element={<Services />} />
     <Route path="/services/digital-marketing" element={<ServiceCategory category="Digital Marketing" />} />
@@ -30,7 +32,7 @@ function App() {
     <Route path="/contact" element={<Contact />} /><Route path="/privacy-policy" element={<PrivacyPolicy />} />
     <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
     <Route path="/refund-policy" element={<RefundPolicy />} /><Route path="/disclaimer" element={<Disclaimer />} />
-    <Route path="/admin" element={<Admin />} /><Route path="*" element={<NotFound />} />
+    <Route path="/admin" element={ADMIN_ENABLED ? <Admin /> : <NotFound />} /><Route path="*" element={<NotFound />} />
   </Route></Routes></BrowserRouter>
 }
 

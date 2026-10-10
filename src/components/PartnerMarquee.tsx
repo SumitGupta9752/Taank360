@@ -1,8 +1,9 @@
 import { useContent } from '../hooks/useContent'
 import { safeUrl } from '../lib/safeUrl'
+import { isContentEnabled } from '../lib/content'
 
 export function PartnerMarquee() {
-  const partners = useContent().partners.filter((partner) => partner.status === 'visible').sort((a, b) => a.order - b.order)
+  const partners = useContent().partners.filter((partner) => isContentEnabled(partner.status)).sort((a, b) => a.order - b.order)
   if (!partners.length) return null
   const repetitions = Math.max(2, Math.ceil(8 / partners.length))
   const items = Array.from({ length: repetitions }, () => partners).flat()

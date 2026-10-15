@@ -5,9 +5,9 @@ import { schemas } from './schema.js'
 export interface ContentEnvelope { app: string; schemaVersion: number; content: Record<string, unknown>; savedAt?: string; exportedAt?: string }
 export interface ValidationResult { valid: boolean; problems: string[]; content?: Record<string, unknown> }
 
-const groups = ['general', 'founder', 'home', 'homeSections', 'about', 'startupProgram', 'womenSupport', 'formOptions', 'partnership', 'services', 'tools', 'portfolio', 'testimonials', 'partners', 'videos', 'banners', 'offers', 'contact', 'social', 'seo', 'legal']
+const groups = ['general', 'founder', 'home', 'homeSections', 'about', 'startupProgram', 'womenSupport', 'formOptions', 'partnership', 'services', 'tools', 'portfolio', 'testimonials', 'partners', 'videos', 'stats', 'faqs', 'timeline', 'banners', 'offers', 'contact', 'social', 'seo', 'legal']
 const fixedSeoRoutes = ['/', '/about', '/services', '/services/digital-marketing', '/services/development', '/services/business-tools', '/startup-program', '/women-entrepreneur-support', '/portfolio', '/partnership', '/contact', '/privacy-policy', '/terms-and-conditions', '/refund-policy', '/disclaimer', '/admin']
-const listGroups = new Set(['services', 'tools', 'portfolio', 'testimonials', 'partners', 'videos', 'banners', 'offers', 'social', 'homeSections', 'seo'])
+const listGroups = new Set(['services', 'tools', 'portfolio', 'testimonials', 'partners', 'videos', 'stats', 'faqs', 'timeline', 'banners', 'offers', 'social', 'homeSections', 'seo'])
 const blockedKeys = new Set(['__proto__', 'constructor', 'prototype'])
 
 function isRecord(value: unknown): value is Record<string, unknown> { return Boolean(value) && typeof value === 'object' && !Array.isArray(value) }

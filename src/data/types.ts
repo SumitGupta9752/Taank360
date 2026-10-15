@@ -4,12 +4,14 @@ export type SeoIndexing = 'index, follow' | 'noindex, nofollow'
 export interface ThemeColors { primary: string; primaryDark: string; accent: string; bg: string; surface: string; text: string; muted: string; border: string }
 export interface GeneralContent { companyName: string; brandName: string; slogans: { primary: string; development: string; startup: string }; supportingLine: string; description: string; logo: string; favicon: string; theme: ThemeColors }
 export interface FounderContent { name: string; photo: string; qualification: string; bio: string; experience: string; award: string; vision: string }
-export interface ServiceItem { id: string; name: string; category: string; description: string; features: string[]; image: string; icon: string; cta: string; status: Status; order: number }
-export interface ToolItem { id: string; name: string; description: string; logo: string; icon: string; features: string[]; price?: string; link?: string; status: Status; order: number }
-export interface PortfolioItem { id: string; clientName: string; logo: string; description: string; industry: string; services: string[]; images: string[]; link: string; status: Status; order: number }
+export interface ServiceItem { id: string; name: string; category: string; description: string; features: string[]; image: string; icon: string; tint?: CardTint; cta: string; status: Status; order: number }
+export type CardTint = 'blue' | 'orange' | 'green' | 'purple' | 'pink'
+export interface ToolItem { id: string; name: string; description: string; logo: string; icon: string; tint?: CardTint; features: string[]; price?: string; link?: string; status: Status; order: number }
+export interface PortfolioMetric { label: string; value: string }
+export interface PortfolioItem { id: string; clientName: string; logo: string; description: string; industry: string; services: string[]; images: string[]; link: string; category?: string; tags?: string[]; metrics?: PortfolioMetric[]; status: Status; order: number }
 export interface Testimonial { id: string; youtubeUrlOrId: string; client: string; company: string; designation: string; text: string; thumbnail: string; status: Status; order: number }
 export interface Partner { id: string; name: string; logo: string; website: string; description: string; status: Status; order: number }
-export interface Banner { id?: string; page: string; desktopImage: string; mobileImage: string; heading: string; description: string; cta: string; ctaLink?: string; overlay: boolean; status: Status }
+export interface Banner { id?: string; page: string; desktopImage: string; mobileImage: string; heading: string; headingHighlight?: string; description: string; cta: string; ctaLink?: string; overlay: boolean; status: Status }
 export interface Offer { id?: string; title: string; description: string; image: string; cta: string; validity: string; validFrom?: string; validTo?: string; status: Status; order?: number }
 export interface ContactContent { phone: string; email: string; whatsapp: string; address: string; businessHours: string }
 export interface SocialLink { platform: string; url: string; label: string }
@@ -22,6 +24,11 @@ export interface FormOptionContent { budgets: string[]; timelines: string[]; pro
 export type VideoAspect = '16:9' | '9:16'
 export type VideoPlacement = 'home' | 'about' | 'services' | 'startup'
 export interface FeaturedVideo { id: string; title: string; youtubeUrlOrId: string; aspect: VideoAspect; placement: VideoPlacement; caption: string; status: Status; order: number }
+export type StatPlacement = 'home' | 'about' | 'startup' | 'partnership' | 'services' | 'portfolio'
+export interface Stat { id: string; value: string; label: string; icon: string; placement: StatPlacement; status: Status; order: number }
+export type FaqPlacement = 'partnership' | 'startup' | 'contact' | 'services'
+export interface Faq { id: string; question: string; answer: string; placement: FaqPlacement; status: Status; order: number }
+export interface TimelineItem { id: string; year: string; title: string; description: string; status: Status; order: number }
 export interface PartnershipProgram { title: string; description: string; requirements: string[]; benefits: string[] }
 export interface PartnershipContent { intro: string; dealership: PartnershipProgram; referral: PartnershipProgram; comparison: { suits: string[]; work: string[]; earn: string[]; requirements: string[]; support: string[] } }
 export interface HomeSection { id: string; enabled: boolean; order: number; heading?: string; subheading?: string }
@@ -29,4 +36,4 @@ export type LegalStatus = 'draft' | 'reviewed'
 export interface LegalSection { heading: string; body: string }
 export interface LegalPage { title: string; lastUpdated: string; status: LegalStatus; sections: LegalSection[] }
 export interface LegalContent { privacy: LegalPage; terms: LegalPage; refund: LegalPage; disclaimer: LegalPage }
-export interface SiteContent { general: GeneralContent; founder: FounderContent; home: HomeContent; homeSections: HomeSection[]; about: AboutContent; startupProgram: StartupContent; womenSupport: WomenSupportContent; formOptions: FormOptionContent; partnership: PartnershipContent; services: ServiceItem[]; tools: ToolItem[]; portfolio: PortfolioItem[]; testimonials: Testimonial[]; partners: Partner[]; videos: FeaturedVideo[]; banners: Banner[]; offers: Offer[]; contact: ContactContent; social: SocialLink[]; seo: SeoEntry[]; legal: LegalContent }
+export interface SiteContent { general: GeneralContent; founder: FounderContent; home: HomeContent; homeSections: HomeSection[]; about: AboutContent; startupProgram: StartupContent; womenSupport: WomenSupportContent; formOptions: FormOptionContent; partnership: PartnershipContent; services: ServiceItem[]; tools: ToolItem[]; portfolio: PortfolioItem[]; testimonials: Testimonial[]; partners: Partner[]; videos: FeaturedVideo[]; stats: Stat[]; faqs: Faq[]; timeline: TimelineItem[]; banners: Banner[]; offers: Offer[]; contact: ContactContent; social: SocialLink[]; seo: SeoEntry[]; legal: LegalContent }

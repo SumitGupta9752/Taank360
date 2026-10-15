@@ -4,6 +4,7 @@ import { Layout } from './components/Layout'
 import { ScrollToTop } from './components/ScrollToTop'
 import { Home } from './pages/Home'
 import { ThemeApplier } from './components/ThemeApplier'
+import { CustomCursor } from './components/CustomCursor'
 import { ADMIN_ENABLED } from './config'
 
 const About = lazy(() => import('./pages/About').then((module) => ({ default: module.About })))
@@ -22,20 +23,36 @@ const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions').then(
 const WomenEntrepreneurSupport = lazy(() => import('./pages/WomenEntrepreneurSupport').then((module) => ({ default: module.WomenEntrepreneurSupport })))
 
 function App() {
-  return <BrowserRouter><ThemeApplier /><ScrollToTop /><Suspense fallback={<div className="route-loading" aria-hidden="true" />}><Routes><Route element={<Layout />}>
-    <Route path="/" element={<Home />} /><Route path="/about" element={<About />} />
-    <Route path="/services" element={<Services />} />
-    <Route path="/services/digital-marketing" element={<ServiceCategory category="Digital Marketing" />} />
-    <Route path="/services/development" element={<ServiceCategory category="Development Solutions" />} />
-    <Route path="/services/business-tools" element={<ServiceCategory category="Business & Marketing Tools" />} />
-    <Route path="/startup-program" element={<StartupProgram />} />
-    <Route path="/women-entrepreneur-support" element={<WomenEntrepreneurSupport />} />
-    <Route path="/portfolio" element={<Portfolio />} /><Route path="/partnership" element={<Partnership />} />
-    <Route path="/contact" element={<Contact />} /><Route path="/privacy-policy" element={<PrivacyPolicy />} />
-    <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-    <Route path="/refund-policy" element={<RefundPolicy />} /><Route path="/disclaimer" element={<Disclaimer />} />
-    <Route path="/admin" element={ADMIN_ENABLED ? <Admin /> : <NotFound />} /><Route path="*" element={<NotFound />} />
-  </Route></Routes></Suspense></BrowserRouter>
+  return (
+    <BrowserRouter>
+      <CustomCursor />
+      <ThemeApplier />
+      <ScrollToTop />
+      <Suspense fallback={<div className="route-loading" aria-hidden="true" />}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/digital-marketing" element={<ServiceCategory category="Digital Marketing" />} />
+            <Route path="/services/development" element={<ServiceCategory category="Development Solutions" />} />
+            <Route path="/services/business-tools" element={<ServiceCategory category="Business & Marketing Tools" />} />
+            <Route path="/startup-program" element={<StartupProgram />} />
+            <Route path="/women-entrepreneur-support" element={<WomenEntrepreneurSupport />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/partnership" element={<Partnership />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/admin" element={ADMIN_ENABLED ? <Admin /> : <NotFound />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  )
 }
 
 export default App

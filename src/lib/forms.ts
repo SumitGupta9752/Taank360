@@ -21,3 +21,8 @@ export function buildMailtoUrl(data: FormData, email: string, subject: string): 
   const body = Object.entries(data).filter(([, value]) => value).map(([label, value]) => `${label}: ${sanitize(value)}`).join('\n')
   return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
+
+export function buildGmailWebUrl(data: FormData, email: string, subject: string): string {
+  const body = Object.entries(data).filter(([, value]) => value).map(([label, value]) => `${label}: ${sanitize(value)}`).join('\n')
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}

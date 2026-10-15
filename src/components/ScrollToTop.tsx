@@ -1,3 +1,3 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-export function ScrollToTop() { const { pathname } = useLocation(); useEffect(() => { const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }) }, [pathname]); return null }
+export function ScrollToTop() { const { pathname } = useLocation(); const [visible, setVisible] = useState(false); useEffect(() => { const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }); const onScroll = () => setVisible(window.scrollY > 500); window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); return () => window.removeEventListener('scroll', onScroll) }, [pathname]); return visible ? <button className="scroll-top" type="button" aria-label="Scroll to top" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })}>↑</button> : null }
